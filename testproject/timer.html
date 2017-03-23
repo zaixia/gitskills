@@ -7,17 +7,16 @@
     <link href="css/TimeCircles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-
 <div id="timer1"></div>
 <div id="timer2"></div>
 <div id="timer3"></div>
 <br>
-<div class="someTimer" ></div>
+<div class="someTimer"></div>
 <script src="js/jquery.js"></script>
 <script src="js/TimeCircles.js"></script>
 <script src="js/echarts.js"></script>
 <script>
-    $(function(){
+    $(function () {
         $(".someTimer").TimeCircles();
     });
     var timer = 10;
@@ -97,7 +96,7 @@
     makeUnitvalue("timer2", timer);
 
     function makeAlert(divID, timer) {
-        var alertContent ="<div class='preloader'>" +
+        var alertContent = "<div class='preloader'>" +
             "<div class='preloader-inner'></div>" +
             "<div class='stateIssue'>" + timer + "</div>" +
             "</div>";
