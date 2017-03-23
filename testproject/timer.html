@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="modal.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div id="james" style="height: 200px;width: 200px"></div>
+<div id="king" style="height: 200px;width: 200px"></div>
+<div id="wubin" style="height: 200px;width: 200px"></div>
+<script src="jquery.js"></script>
+<script src="echarts.js"></script>
+<script>
+    var timer = 10;
+    setInterval(function () {
+        if(timer >= 0){
+            makeSingle("james",timer);
+            makeUnitvalue("king",timer);
+            makeAlert("wubin",timer);
+            timer --
+        }else {
+            timer = 10;
+            makeSingle("james",timer);
+            makeUnitvalue("king",timer);
+            makeAlert("wubin",timer);
+            timer --
+        }
+
+    },1000);
+    function makeSingle(divID,single_data){
+        var singlevalue = '<div class="cas-chart-container unitvalue-round">'+
+            '<div class="unitvalue-rondLine">'+
+            '<div class="unitvalue-ball"></div>'+
+            '</div>'+
+            '<div class="unitvalue-bg">'+
+            '<p>'+single_data+'</p>'+
+            '</div>'+
+            '</div>';
+        $("#"+divID).html(singlevalue);
+    };
+
+
+    function makeUnitvalue(divId,value_data){
+        var myCharts = echarts.init(document.getElementById(divId),'castheme');
+        var option = {
+            title: {
+                text: value_data,
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    color: '#fff',
+                    fontWeight: 'bolder',
+                    fontSize: 30,
+                }
+            },
+            series: [{
+                hoverAnimation: false,
+                legendHoverLink: false,
+                type: 'pie',
+                radius: ['80%', '75%'],
+                label: {
+                    normal: {
+                        show: false,
+                    }
+                },
+                data: [
+                    {
+                        value:100,
+                        itemStyle: {
+                            normal: {
+                                color: '#1E90FF',
+                            }
+                        }
+                    }]
+            }]
+        };
+        myCharts.setOption(option);
+    };
+
+    function makeAlert(divID,series_data){
+            var alertContent = "<span class='glyphicon glyphicon-warning-sign issure position-top-right'></span>"+
+                "<div class='cas-chart-container textLargeSize stateIssue'>"+series_data+"</div>"+
+                "<div class='preloader'>"+
+                "<div class='preloader-inner'></div>"+
+                "</div>";
+        $("#"+divID).html(alertContent);
+    };
+</script>
+</body>
+</html>
