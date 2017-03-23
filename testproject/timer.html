@@ -1,46 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="modal.css" rel="stylesheet" type="text/css">
+    <link href="css/timer.css" rel="stylesheet" type="text/css">
+    <link href="css/TimeCircles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div id="james" style="height: 200px;width: 200px"></div>
-<div id="king" style="height: 200px;width: 200px"></div>
-<div id="wubin" style="height: 200px;width: 200px"></div>
-<script src="jquery.js"></script>
+
+<div id="timer1"></div>
+<div id="timer2"></div>
+<div id="timer3"></div>
+<br>
+<div class="someTimer" ></div>
+<script src="js/common/jquery.js"></script>
+<script src="js/TimeCircles.js"></script>
 <script src="echarts.js"></script>
 <script>
+    $(function(){
+        $(".someTimer").TimeCircles();
+    });
     var timer = 10;
-    function makeSingle(divID,timer){
-        var singlevalue = '<div class="cas-chart-container unitvalue-round">'+
-            '<div class="unitvalue-rondLine">'+
-            '<div class="unitvalue-ball"></div>'+
-            '</div>'+
-            '<div class="unitvalue-bg">'+
-            '<p class ="timeSingle">'+timer+'</p>'+
-            '</div>'+
+    function makeSingle(divID, timer) {
+        var singlevalue = '<div class="unitvalue-round">' +
+            '<div class="unitvalue-rondLine">' +
+            '<div class="unitvalue-ball"></div>' +
+            '</div>' +
+            '<div class="unitvalue-bg">' +
+            '<p class ="timeSingle">' + timer + '</p>' +
+            '</div>' +
             '</div>';
         setInterval(function () {
-            if (timer >= 0){
-                $("#"+divID).html(singlevalue);
+            if (timer >= 0) {
+                $("#" + divID).html(singlevalue);
                 $(".timeSingle").text(timer);
-                timer -- ;
-            }else {
+                timer--;
+            } else {
                 timer = 10;
-                $("#"+divID).html(singlevalue);
+                $("#" + divID).html(singlevalue);
                 $(".timeSingle").text(timer);
-                timer -- ;
+                timer--;
             }
-        },1000);
+        }, 1000);
         console.log("makeSingle");
-    };
-    makeSingle("james",timer);
+    }
+    ;
+    makeSingle("timer1", timer);
 
-    function makeUnitvalue(divId,timer){
-        var myCharts = echarts.init(document.getElementById(divId),'castheme');
+    function makeUnitvalue(divId, timer) {
+        var myCharts = echarts.init(document.getElementById(divId));
         var option = {
             title: {
                 text: timer,
@@ -64,7 +72,7 @@
                 },
                 data: [
                     {
-                        value:100,
+                        value: 100,
                         itemStyle: {
                             normal: {
                                 color: '#1E90FF',
@@ -74,41 +82,40 @@
             }]
         };
         setInterval(function () {
-            if (timer >= 0){
-                console.log(option.title.text );
+            if (timer >= 0) {
                 option.title.text = timer;
-                myCharts.setOption(option,true);
-                timer -- ;
-            }else {
+                myCharts.setOption(option, true);
+                timer--;
+            } else {
                 timer = 10;
                 option.title.text = timer;
                 myCharts.setOption(option);
             }
-        },1000);
-    };
-    makeUnitvalue("king",timer);
+        }, 1000);
+    }
+    ;
+    makeUnitvalue("timer2", timer);
 
-    function makeAlert(divID,timer){
-            var alertContent = "<span class='glyphicon glyphicon-warning-sign issure position-top-right'></span>"+
-                "<div class='cas-chart-container textLargeSize stateIssue'>"+timer+"</div>"+
-                "<div class='preloader'>"+
-                "<div class='preloader-inner'></div>"+
-                "</div>";
-        console.log("makeAlert");
+    function makeAlert(divID, timer) {
+        var alertContent ="<div class='preloader'>" +
+            "<div class='preloader-inner'></div>" +
+            "<div class='stateIssue'>" + timer + "</div>" +
+            "</div>";
         setInterval(function () {
-            if (timer >= 0){
-                $("#"+divID).html(alertContent);
+            if (timer >= 0) {
+                $("#" + divID).html(alertContent);
                 $(".stateIssue").text(timer);
-                timer -- ;
-            }else {
+                timer--;
+            } else {
                 timer = 10;
-                $("#"+divID).html(alertContent);
+                $("#" + divID).html(alertContent);
                 $(".stateIssue").text(timer);
-                timer -- ;
+                timer--;
             }
-        },1000);
-    };
-    makeAlert("wubin",timer);
+        }, 1000);
+    }
+    ;
+    makeAlert("timer3", timer);
 </script>
 </body>
 </html>

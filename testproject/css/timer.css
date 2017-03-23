@@ -1,0 +1,131 @@
+/*cas common start*/
+html{
+	font-size:10px ;
+}
+body{
+	background: #041123;
+}
+
+/*cas common end*/
+#timer1,
+#timer2,
+#timer3 {
+	display: inline-block;
+	height: 200px;
+	width: 200px;
+	margin-left:100px;
+	float: left;
+}
+#timer2{
+}
+/*定时器1样式 开始*/
+.unitvalue-round {
+	padding-top: 10px;
+	font-size: 4rem;
+}
+
+.unitvalue-round .unitvalue-bg {
+  color:#041123;
+  font-family:calibri;
+  text-align:center;
+  margin:-205px auto 0 auto;
+  height:150px;
+  width:150px;
+  border-radius:90px;
+  background:#0CF;
+  
+}
+.unitvalue-round .unitvalue-bg  p{ line-height:150px;}
+
+
+.unitvalue-round .unitvalue-ball {
+  height:20px;
+  width:20px;
+  background-color:#0CF;
+  border-radius:50%;
+  margin:15px;
+}
+
+.unitvalue-round .unitvalue-rondLine {
+  height:180px;
+  width:180px;
+  border:1px solid #0CF;
+  border-radius:50%;
+  margin:0 auto 0 auto;
+  animation:rond 1s infinite;
+  -webkit-animation:rond 1s infinite;
+}
+
+@keyframes rond {
+  0% {transform : rotate(0deg);}
+  100% {transform : rotate(360deg);}
+}
+
+@-webkit-keyframes rond {
+    0%{-webkit-transform : rotate(0deg);}
+  100%{-webkit-transform : rotate(360deg);}
+}
+/*定时器1样式 结束*/
+
+
+/*计时器3样式 开始*/
+
+.stateIssue {
+	text-align: center;
+	/*margin-left:-90px;*/
+	margin-top:-150px;
+	font-size: 7em;
+	color: #fff;
+}
+.preloader{
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.preloader .preloader-inner {
+	display: block;
+	position: relative;
+	width:200px;
+	height:200px;
+	/*! margin:0 auto; */
+	border-radius: 50%;
+	border: 3px solid transparent;
+	border-top-color: #3498db;
+	animation: spin 1s linear infinite;
+}
+/*.preloader .preloader-inner:before {*/
+	/*content: "";*/
+	/*position: absolute;*/
+	/*top: 5px;*/
+	/*left: 5px;*/
+	/*right: 5px;*/
+	/*bottom: 5px;*/
+	/*border-radius: 50%;*/
+	/*border: 3px solid transparent;*/
+	/*border-top-color: #e74c3c;*/
+	/*animation: spin 2s linear infinite;*/
+/*}*/
+/*.preloader .preloader-inner:after {*/
+	/*content: "";*/
+	/*position: absolute;*/
+	/*top: 15px;*/
+	/*left: 15px;*/
+	/*right: 15px;*/
+	/*bottom: 15px;*/
+	/*border-radius: 50%;*/
+	/*border: 3px solid transparent;*/
+	/*border-top-color: #f9c922;*/
+	/*animation: spin 1.5s linear infinite;*/
+/*}*/
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+/*计时器3样式 结束*/
+.someTimer{
+	margin-top: 300px;
+}
